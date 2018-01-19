@@ -25,7 +25,7 @@ int main(int argc, char *argv[])
             break;
 
         gfx_clear(ctx);
-        gfx_putpixel(ctx, 10, 10, COLOR_RED);
+        gfx_putpixel(ctx, 20, 10, COLOR_RED);
         gfx_update(ctx);
     }
 
@@ -53,7 +53,7 @@ void gfx_clear(context_t *ctx)
 void gfx_putpixel(context_t *ctx, unsigned int x, unsigned int y, SDL_Color color)
 {
     SDL_SetRenderDrawColor(ctx->renderer, color.r, color.g, color.b, color.a);
-    SDL_RenderDrawPoint(ctx->renderer, 10, 10);
+    SDL_RenderDrawPoint(ctx->renderer, x, y);
 }
 
 void gfx_update(context_t *ctx)
