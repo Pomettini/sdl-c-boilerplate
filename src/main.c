@@ -9,19 +9,13 @@
 #define WINDOW_WIDTH 640
 #define WINDOW_HEIGHT 480
 
-#define COLOR_BLACK (SDL_Color) { 0, 0, 0, 0 }
-#define COLOR_RED (SDL_Color) { 255, 0, 0, 0 }
-#define COLOR_GREEN (SDL_Color) { 0, 255, 0, 0 }
-
 int main(int argc, char *argv[]) 
 {
-    SDL_Event event;
-
-    context_t *ctx = gfx_init();
+    context_t *ctx = gfx_init(WINDOW_WIDTH, WINDOW_HEIGHT);
 
     while (1) 
     {
-        if (SDL_PollEvent(&event) && event.type == SDL_QUIT)
+        if (SDL_PollEvent(ctx->event) && ctx->event->type == SDL_QUIT)
             break;
 
         gfx_clear(ctx, COLOR_BLACK);
@@ -32,38 +26,4 @@ int main(int argc, char *argv[])
     gfx_destroy(ctx);
 
     return 0;
-}
-
-context_t* gfx_init()
-{
-    context_t *ctx = malloc(sizeof(context_t));
-
-    SDL_Init(SDL_INIT_VIDEO);
-    SDL_CreateWindowAndRenderer(WINDOW_WIDTH, WINDOW_HEIGHT, 0, &ctx->window, &ctx->renderer);
-
-    return ctx;
-}
-
-void gfx_clear(context_t *ctx, SDL_Color color)
-{
-    SDL_SetRenderDrawColor(ctx->renderer, color.r, color.g, color.b, color.a);
-    SDL_RenderClear(ctx->renderer);
-}
-
-void gfx_putpixel(context_t *ctx, unsigned int x, unsigned int y, SDL_Color color)
-{
-    SDL_SetRenderDrawColor(ctx->renderer, color.r, color.g, color.b, color.a);
-    SDL_RenderDrawPoint(ctx->renderer, x, y);
-}
-
-void gfx_update(context_t *ctx)
-{
-    SDL_RenderPresent(ctx->renderer);
-}
-
-void gfx_destroy(context_t *ctx)
-{
-    SDL_DestroyRenderer(ctx->renderer);
-    SDL_DestroyWindow(ctx->window);
-    SDL_Quit();
 }
