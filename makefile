@@ -1,0 +1,1 @@
+clang -o main src/*.c -I include/ -l SDL2 && ./main
