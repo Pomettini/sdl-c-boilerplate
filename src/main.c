@@ -9,14 +9,13 @@
 #define WINDOW_WIDTH 640
 #define WINDOW_HEIGHT 480
 
+#define COLOR_BLACK (SDL_Color) { 0, 0, 0, 0 }
 #define COLOR_RED (SDL_Color) { 255, 0, 0, 0 }
 #define COLOR_GREEN (SDL_Color) { 0, 255, 0, 0 }
 
 int main(int argc, char *argv[]) 
 {
     SDL_Event event;
-    SDL_Window *window;
-    SDL_Renderer *renderer;
 
     context_t *ctx = gfx_init();
 
@@ -25,7 +24,7 @@ int main(int argc, char *argv[])
         if (SDL_PollEvent(&event) && event.type == SDL_QUIT)
             break;
 
-        gfx_clear(ctx);
+        gfx_clear(ctx, COLOR_BLACK);
         gfx_putpixel(ctx, 20, 10, COLOR_RED);
         gfx_update(ctx);
     }
@@ -45,9 +44,9 @@ context_t* gfx_init()
     return ctx;
 }
 
-void gfx_clear(context_t *ctx)
+void gfx_clear(context_t *ctx, SDL_Color color)
 {
-    SDL_SetRenderDrawColor(ctx->renderer, 0, 0, 0, 0);
+    SDL_SetRenderDrawColor(ctx->renderer, color.r, color.g, color.b, color.a);
     SDL_RenderClear(ctx->renderer);
 }
 
