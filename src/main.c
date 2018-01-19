@@ -10,6 +10,7 @@
 #define WINDOW_HEIGHT 480
 
 #define COLOR_RED (SDL_Color) { 255, 0, 0, 0 }
+#define COLOR_GREEN (SDL_Color) { 0, 255, 0, 0 }
 
 int main(int argc, char *argv[]) 
 {
