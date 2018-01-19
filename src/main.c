@@ -1,10 +1,4 @@
-#ifdef _WIN32
-#include <SDL.h>
-#else
-#include <SDL2/SDL.h>
-#endif
-
-#include <gfx.h>
+#include "gfx.c"
 
 #define WINDOW_WIDTH 640
 #define WINDOW_HEIGHT 480
