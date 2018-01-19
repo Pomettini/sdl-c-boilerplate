@@ -20,3 +20,4 @@ void gfx_destroy(context_t *);
 #define COLOR_BLACK (SDL_Color) { 0, 0, 0, 0 }
 #define COLOR_RED (SDL_Color) { 255, 0, 0, 0 }
 #define COLOR_GREEN (SDL_Color) { 0, 255, 0, 0 }
+#define COLOR_BLUE (SDL_Color) { 0, 0, 255, 0 }

@@ -13,7 +13,7 @@ int main(int argc, char *argv[])
             break;
 
         gfx_clear(ctx, COLOR_BLACK);
-        gfx_putpixel(ctx, 20, 10, COLOR_RED);
+        gfx_putpixel(ctx, 20, 10, COLOR_GREEN);
         gfx_update(ctx);
     }
 
