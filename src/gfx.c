@@ -10,7 +10,7 @@ context_t* gfx_init(unsigned int width, unsigned int height)
     if(SDL_Init(SDL_INIT_VIDEO) != 0)
     {
         fprintf(stderr, "Unable to initialize SDL");
-        gfx_destroy(ctx);
+        free(ctx);
         return NULL;
     }
 

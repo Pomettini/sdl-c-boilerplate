@@ -7,6 +7,9 @@ int main(int argc, char *argv[])
 {
     context_t *ctx = gfx_init(WINDOW_WIDTH, WINDOW_HEIGHT);
 
+    if(!ctx)
+        return -1;
+
     while (1) 
     {
         if (SDL_PollEvent(ctx->event) && ctx->event->type == SDL_QUIT)
